@@ -7,6 +7,7 @@ Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
 Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
  
+BuildRequires: a2x
 BuildRequires: qmake5
 BuildRequires: cmake(MatrixClient)
 BuildRequires: cmake(Olm)

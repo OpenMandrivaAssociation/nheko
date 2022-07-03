@@ -43,7 +43,6 @@ BuildRequires: pkgconfig(openssl)
 BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xcb-ewmh)
 BuildRequires: pkgconfig(zlib)
-BuildRequires: ninja
 BuildRequires: asciidoc
 BuildRequires: cmake
 BuildRequires: appstream-util
@@ -69,7 +68,7 @@ for Matrix that feels more like a mainstream chat app.
 %autosetup -p1
  
 %build
-%cmake -G Ninja \
+%cmake
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
     -DCOMPILE_QML:BOOL=OFF \
@@ -92,10 +91,10 @@ for Matrix that feels more like a mainstream chat app.
     -DUSE_BUNDLED_OPENSSL:BOOL=OFF \
     -DUSE_BUNDLED_QTKEYCHAIN:BOOL=OFF \
     -DUSE_BUNDLED_SPDLOG:BOOL=OFF
-%ninja_build -C build
+%make_build
 
 %install
-%ninja_install -C build
+%make_install -C build
 
 %files
 %doc README.md CHANGELOG.md

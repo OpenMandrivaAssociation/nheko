@@ -1,4 +1,4 @@
-ame: nheko
+Name: nheko
 Version: 0.9.3
 Release: 1
 Group:   Networking/Instant Messenger

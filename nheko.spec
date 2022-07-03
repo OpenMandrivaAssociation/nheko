@@ -46,7 +46,7 @@ BuildRequires: pkgconfig(zlib)
 BuildRequires: asciidoc
 BuildRequires: cmake
 BuildRequires: appstream-util
-#BuildRequires: lmdbxx-devel >= 1.0.0
+BuildRequires: lmdbxx-devel >= 1.0.0
  
 Requires: hicolor-icon-theme
 #Requires: qt-jdenticon

@@ -49,8 +49,9 @@ BuildRequires: appstream-util
 BuildRequires: lmdbxx-devel >= 1.0.0
  
 Requires: hicolor-icon-theme
-#Requires: qt-jdenticon
+Requires: qt-jdenticon
 Requires: qt5-qtquickcontrols2
+Requires: qt5-qtdeclarative-animation
  
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts

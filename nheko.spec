@@ -1,5 +1,5 @@
 Name: nheko
-Version: 0.9.3
+Version: 0.10.0
 Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3

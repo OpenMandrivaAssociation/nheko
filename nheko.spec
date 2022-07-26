@@ -104,4 +104,5 @@ for Matrix that feels more like a mainstream chat app.
 %{_metainfodir}/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/zsh/site-functions/_nheko
 %{_mandir}/man1/%{name}.1*

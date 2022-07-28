@@ -1,6 +1,6 @@
 Name: nheko
 Version: 0.10.0
-Release: 1
+Release: 2
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol
@@ -52,6 +52,12 @@ Requires: hicolor-icon-theme
 Requires: qt-jdenticon
 Requires: qt5-qtquickcontrols2
 Requires: qt5-qtdeclarative-animation
+
+# Need on non Qt5 system installations as gnome, xfce or mate
+
+Requires: qt5-qtmultimedia
+Requires: qt5-qtgraphicaleffects
+Requires: %{_lib}qt5core5
  
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts

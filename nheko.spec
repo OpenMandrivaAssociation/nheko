@@ -9,7 +9,7 @@ Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{ver
  
 BuildRequires: a2x
 BuildRequires: qmake5
-BuildRequires: cmake(MatrixClient)
+BuildRequires: cmake(MatrixClient) >= 0.9.1
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt5Concurrent)
 BuildRequires: cmake(Qt5Core)
@@ -27,7 +27,7 @@ BuildRequires: cmake(Qt5Widgets)
 BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json) 
 BuildRequires: cmake(spdlog) 
-BuildRequires: pkgconfig(coeurl)
+BuildRequires: pkgconfig(coeurl) >= 0.3.0
 BuildRequires: pkgconfig(gstreamer-1.0)
 BuildRequires: pkgconfig(gstreamer-app-1.0)
 BuildRequires: pkgconfig(gstreamer-audio-1.0)
@@ -40,6 +40,7 @@ BuildRequires: pkgconfig(libcrypto)
 BuildRequires: pkgconfig(libevent)
 BuildRequires: pkgconfig(lmdb)
 BuildRequires: pkgconfig(openssl)
+BuildRequires: pkgconfig(re2)
 BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xcb-ewmh)
 BuildRequires: pkgconfig(zlib)

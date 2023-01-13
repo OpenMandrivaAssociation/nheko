@@ -1,6 +1,6 @@
 Name: nheko
-Version: 0.10.2
-Release: 3
+Version: 0.11.0
+Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol

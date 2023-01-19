@@ -76,8 +76,8 @@ for Matrix that feels more like a mainstream chat app.
 %autosetup -p1
  
 %build
-#export CC=gcc
-#export CXX=g++
+export CC=gcc
+export CXX=g++
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \

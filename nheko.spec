@@ -1,11 +1,12 @@
 Name: nheko
 Version: 0.11.3
-Release: 2
+Release: 3
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
 Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0: nheko-fmt-10.patch
  
 BuildRequires: a2x
 BuildRequires: qmake5
@@ -76,8 +77,6 @@ for Matrix that feels more like a mainstream chat app.
 %autosetup -p1
  
 %build
-export CC=gcc
-export CXX=g++
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \

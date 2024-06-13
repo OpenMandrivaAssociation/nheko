@@ -27,6 +27,7 @@ BuildRequires: cmake(Qt6Widgets)
 BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json) 
 BuildRequires: cmake(spdlog) 
+BuildRequires: cmake(KDSingleApplication-qt6)
 BuildRequires: pkgconfig(coeurl) >= 0.3.0
 BuildRequires: pkgconfig(gstreamer-1.0)
 BuildRequires: pkgconfig(gstreamer-app-1.0)

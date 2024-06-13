@@ -1,30 +1,28 @@
 Name: nheko
-Version: 0.11.3
-Release: 6
+Version: 0.12.0
+Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
 Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0: nheko-fmt-10.patch
  
 BuildRequires: a2x
-BuildRequires: qmake5
+BuildRequires: qmake-qt6
 BuildRequires: cmake(MatrixClient) >= 0.9.1
 BuildRequires: cmake(Olm)
-BuildRequires: cmake(Qt5Concurrent)
-BuildRequires: cmake(Qt5Core)
-BuildRequires: cmake(Qt5DBus)
-BuildRequires: cmake(Qt5Keychain)
-BuildRequires: cmake(Qt5LinguistTools)
-BuildRequires: cmake(Qt5Multimedia)
-BuildRequires: cmake(Qt5Network)
-BuildRequires: cmake(Qt5Qml)
-BuildRequires: cmake(Qt5QuickCompiler)
-BuildRequires: cmake(Qt5QuickControls2)
-BuildRequires: cmake(Qt5QuickWidgets)
-BuildRequires: cmake(Qt5Svg)
-BuildRequires: cmake(Qt5Widgets)
+BuildRequires: cmake(Qt6Concurrent)
+BuildRequires: cmake(Qt6Core)
+BuildRequires: cmake(Qt6DBus)
+BuildRequires: cmake(Qt6Keychain)
+BuildRequires: cmake(Qt6LinguistTools)
+BuildRequires: cmake(Qt6Multimedia)
+BuildRequires: cmake(Qt6Network)
+BuildRequires: cmake(Qt6Qml)
+BuildRequires: cmake(Qt6QuickControls2)
+BuildRequires: cmake(Qt6QuickWidgets)
+BuildRequires: cmake(Qt6Svg)
+BuildRequires: cmake(Qt6Widgets)
 BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json) 
 BuildRequires: cmake(spdlog) 
@@ -51,23 +49,14 @@ BuildRequires: appstream-util
 BuildRequires: lmdbxx-devel >= 1.0.0
  
 Requires: hicolor-icon-theme
-Requires: qt-jdenticon
-Requires: qt5-qtquickcontrols2
-Requires: qt5-qtdeclarative-animation
 
-# Need on non Qt5 system installations as gnome, xfce or mate
-
-Requires: qt5-qtmultimedia
-Requires: qt5-qtgraphicaleffects
-Requires: %{_lib}qt5core5
- 
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts
  
 # https://github.com/Nheko-Reborn/nheko/issues/391
 Provides: bundled(blurhash) = 0.0.1
 Provides: bundled(cpp-httplib) = 0.5.12
-Provides: bundled(qtsingleapplication-qt5) = 3.2.0-gitdc8042b
+Provides: bundled(qtsingleapplication-qt6) = 3.2.0-gitdc8042b
  
 %description
 The motivation behind the project is to provide a native desktop app

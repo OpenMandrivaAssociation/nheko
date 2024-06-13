@@ -9,7 +9,7 @@ Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{ver
  
 BuildRequires: a2x
 BuildRequires: qmake-qt6
-BuildRequires: cmake(MatrixClient) >= 0.9.1
+BuildRequires: cmake(MatrixClient) >= 0.10.0
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt6Concurrent)
 BuildRequires: cmake(Qt6Core)
@@ -19,16 +19,18 @@ BuildRequires: cmake(Qt6LinguistTools)
 BuildRequires: cmake(Qt6Multimedia)
 BuildRequires: cmake(Qt6Network)
 BuildRequires: cmake(Qt6Qml)
+BuildRequires: cmake(Qt6QmlCore)
 BuildRequires: cmake(Qt6Quick)
 BuildRequires: cmake(Qt6QuickControls2)
 BuildRequires: cmake(Qt6QuickWidgets)
 BuildRequires: cmake(Qt6Svg)
 BuildRequires: cmake(Qt6Widgets)
+BuildRequires: cmake(KDSingleApplication-qt6)
 BuildRequires: cmake(mpark_variant)
 BuildRequires: cmake(nlohmann_json) 
 BuildRequires: cmake(spdlog) 
 BuildRequires: cmake(KDSingleApplication-qt6)
-BuildRequires: pkgconfig(coeurl) >= 0.3.0
+BuildRequires: pkgconfig(coeurl) >= 0.3.1
 BuildRequires: pkgconfig(gstreamer-1.0)
 BuildRequires: pkgconfig(gstreamer-app-1.0)
 BuildRequires: pkgconfig(gstreamer-audio-1.0)
@@ -49,6 +51,9 @@ BuildRequires: asciidoc
 BuildRequires: cmake
 BuildRequires: appstream-util
 BuildRequires: lmdbxx-devel >= 1.0.0
+BuildRequires: qml(QtNetwork)
+BuildRequires: qt6-qtmultimedia-gstreamer
+BuildRequires: qt6-qtbase-theme-gtk3
  
 Requires: hicolor-icon-theme
 

@@ -6,6 +6,7 @@ License: GPLv3
 Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
 Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:  https://patch-diff.githubusercontent.com/raw/Nheko-Reborn/nheko/pull/1776.patch
  
 BuildRequires: a2x
 BuildRequires: qmake-qt6

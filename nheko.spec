@@ -1,15 +1,35 @@
 Name: nheko
-Version: 0.12.0
-Release: 5
+Version: 0.12.1
+Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
 Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:  https://patch-diff.githubusercontent.com/raw/Nheko-Reborn/nheko/pull/1776.patch
- 
+
+BuildSystem:   cmake
+BuildOption:   -DCMAKE_BUILD_TYPE=Release
+BuildOption:   -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
+BuildOption:   -DCOMPILE_QML:BOOL=OFF
+BuildOption:   -DHUNTER_ENABLED:BOOL=OFF
+BuildOption:   -DCI_BUILD:BOOL=OFF -DASAN:BOOL=OFF
+BuildOption:   -DQML_DEBUGGING:BOOL=OFF
+BuildOption:   -DBUILD_DOCS:BOOL=OFF     
+BuildOption:   -DVOIP:BOOL=ON -DMAN:BOOL=ON
+BuildOption:   -DUSE_BUNDLED_CMARK:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_COEURL:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_GTEST:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_JSON:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_LIBEVENT:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_LMDB:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_LMDBXX:BOOL=OFF     
+BuildOption:   -DUSE_BUNDLED_MTXCLIENT:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_OLM:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_OPENSSL:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_QTKEYCHAIN:BOOL=OFF
+BuildOption:   -DUSE_BUNDLED_SPDLOG:BOOL=OFF
+
 BuildRequires: a2x
-BuildRequires: qmake-qt6
 BuildRequires: cmake(MatrixClient) >= 0.9.1
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt6Concurrent)
@@ -47,55 +67,22 @@ BuildRequires: pkgconfig(xcb)
 BuildRequires: pkgconfig(xcb-ewmh)
 BuildRequires: pkgconfig(zlib)
 BuildRequires: asciidoc
-BuildRequires: cmake
 BuildRequires: appstream-util
 BuildRequires: lmdbxx-devel >= 1.0.0
- 
+
 Requires: hicolor-icon-theme
 
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts
- 
-# https://github.com/Nheko-Reborn/nheko/issues/391
-Provides: bundled(blurhash) = 0.0.1
-Provides: bundled(cpp-httplib) = 0.5.12
-Provides: bundled(qtsingleapplication-qt6) = 3.2.0-gitdc8042b
- 
+
+%patchlist
+fix-qt-6.10-private-pkg.patch
+
+
 %description
 The motivation behind the project is to provide a native desktop app
 for Matrix that feels more like a mainstream chat app.
- 
-%prep
-%autosetup -p1
- 
-%build
-%cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
-    -DCOMPILE_QML:BOOL=OFF \
-    -DHUNTER_ENABLED:BOOL=OFF \
-    -DCI_BUILD:BOOL=OFF \
-    -DASAN:BOOL=OFF \
-    -DQML_DEBUGGING:BOOL=OFF \
-    -DBUILD_DOCS:BOOL=OFF \
-    -DVOIP:BOOL=ON \
-    -DMAN:BOOL=ON \
-    -DUSE_BUNDLED_CMARK:BOOL=OFF \
-    -DUSE_BUNDLED_COEURL:BOOL=OFF \
-    -DUSE_BUNDLED_GTEST:BOOL=OFF \
-    -DUSE_BUNDLED_JSON:BOOL=OFF \
-    -DUSE_BUNDLED_LIBEVENT:BOOL=OFF \
-    -DUSE_BUNDLED_LMDB:BOOL=OFF \
-    -DUSE_BUNDLED_LMDBXX:BOOL=OFF \
-    -DUSE_BUNDLED_MTXCLIENT:BOOL=OFF \
-    -DUSE_BUNDLED_OLM:BOOL=OFF \
-    -DUSE_BUNDLED_OPENSSL:BOOL=OFF \
-    -DUSE_BUNDLED_QTKEYCHAIN:BOOL=OFF \
-    -DUSE_BUNDLED_SPDLOG:BOOL=OFF
-%make_build
 
-%install
-%make_install -C build
 
 %files
 %doc README.md CHANGELOG.md

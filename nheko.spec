@@ -1,11 +1,25 @@
+# set to nil when packaging a release,
+# or the long commit tag for the specific git branch
+%define commit_tag 2769642d3c7bd3c0d830b2f18ef6b3bf6a710bf4
+
+# when using a commit_tag (i.e. not nil) add a commit date
+# decoration ~0.yyyyMMdd to Version number
+%define commit_date 20250914
+
 Name: nheko
-Version: 0.12.1
+Version: 0.12.2%{?commit_date:~0.%{commit_date}}
 Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol
 URL: https://github.com/Nheko-Reborn/nheko
-Source0: https://github.com/Nheko-Reborn/nheko/archive/v%{version}/%{name}-%{version}.tar.gz
+
+# change the source URL depending on if the package is a release version or a git version
+%if "%{commit_tag}" != "%{nil}"
+Source0:        https://github.com/Nheko-Reborn/%name/archive/%{commit_tag}.tar.gz#/%{name}-%{version}.tar.gz
+%else
+Source0:        https://github.com/Nheko-Reborn/%name/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%endif
 
 BuildSystem:   cmake
 BuildOption:   -DCMAKE_BUILD_TYPE=Release
@@ -75,8 +89,9 @@ Requires: hicolor-icon-theme
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts
 
-%patchlist
-fix-qt-6.10-private-pkg.patch
+# %patchlist
+# fix-qt-6.10-private-pkg.patch
+# fix-nheko-reply-render.patch
 
 
 %description

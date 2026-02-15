@@ -1,14 +1,14 @@
 # set to nil when packaging a release,
 # or the long commit tag for the specific git branch
-%define commit_tag 2769642d3c7bd3c0d830b2f18ef6b3bf6a710bf4
+%define commit_tag 89e06f32ddb58e1c6385a54f4ae4fba1d1247026
 
 # when using a commit_tag (i.e. not nil) add a commit date
 # decoration ~0.yyyyMMdd to Version number
-%define commit_date 20250914
+%define commit_date 20260211
 
 Name: nheko
 Version: 0.12.2%{?commit_date:~0.%{commit_date}}
-Release: 3
+Release: 1
 Group:   Networking/Instant Messenger
 License: GPLv3
 Summary: Desktop client for the Matrix protocol

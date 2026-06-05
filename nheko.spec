@@ -1,10 +1,12 @@
 # set to nil when packaging a release,
 # or the long commit tag for the specific git branch
-%define commit_tag 89e06f32ddb58e1c6385a54f4ae4fba1d1247026
+%define commit_tag 90ff9c6f36dd9df9e0e23212c34b83ec61772bba
 
 # when using a commit_tag (i.e. not nil) add a commit date
 # decoration ~0.yyyyMMdd to Version number
-%define commit_date 20260211
+%if "%{commit_tag}" != "%{nil}"
+%define commit_date 20260508
+%endif
 
 Name: nheko
 Version: 0.12.2%{?commit_date:~0.%{commit_date}}
@@ -16,9 +18,9 @@ URL: https://github.com/Nheko-Reborn/nheko
 
 # change the source URL depending on if the package is a release version or a git version
 %if "%{commit_tag}" != "%{nil}"
-Source0:        https://github.com/Nheko-Reborn/%name/archive/%{commit_tag}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %url/archive/%{commit_tag}/%{name}-%{version}.tar.gz
 %else
-Source0:        https://github.com/Nheko-Reborn/%name/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %url/archive/%{version}/%{name}-%{version}.tar.gz
 %endif
 
 BuildSystem:   cmake
@@ -29,7 +31,7 @@ BuildOption:   -DHUNTER_ENABLED:BOOL=OFF
 BuildOption:   -DCI_BUILD:BOOL=OFF -DASAN:BOOL=OFF
 BuildOption:   -DQML_DEBUGGING:BOOL=OFF
 BuildOption:   -DBUILD_DOCS:BOOL=OFF     
-BuildOption:   -DVOIP:BOOL=ON -DMAN:BOOL=ON
+BuildOption:   -DVOIP:BOOL=OFF -DMAN:BOOL=ON
 BuildOption:   -DUSE_BUNDLED_CMARK:BOOL=OFF
 BuildOption:   -DUSE_BUNDLED_COEURL:BOOL=OFF
 BuildOption:   -DUSE_BUNDLED_GTEST:BOOL=OFF
@@ -44,7 +46,7 @@ BuildOption:   -DUSE_BUNDLED_QTKEYCHAIN:BOOL=OFF
 BuildOption:   -DUSE_BUNDLED_SPDLOG:BOOL=OFF
 
 BuildRequires: a2x
-BuildRequires: cmake(MatrixClient) >= 0.9.1
+BuildRequires: cmake(MatrixClient) >= 0.10.1
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt6Concurrent)
 BuildRequires: cmake(Qt6Core)
@@ -70,7 +72,6 @@ BuildRequires: pkgconfig(gstreamer-audio-1.0)
 BuildRequires: pkgconfig(gstreamer-base-1.0)
 BuildRequires: pkgconfig(gstreamer-sdp-1.0)
 BuildRequires: pkgconfig(gstreamer-video-1.0)
-BuildRequires: pkgconfig(gstreamer-webrtc-1.0)
 BuildRequires: pkgconfig(libcmark) >= 0.29.0
 BuildRequires: pkgconfig(libcrypto)
 BuildRequires: pkgconfig(libevent)
@@ -89,9 +90,7 @@ Requires: hicolor-icon-theme
 Recommends: google-noto-emoji-color-fonts
 Recommends: google-noto-emoji-fonts
 
-# %patchlist
-# fix-qt-6.10-private-pkg.patch
-# fix-nheko-reply-render.patch
+%patchlist
 
 
 %description
